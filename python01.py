@@ -1,13 +1,23 @@
 import pandas as pd
 
 # Assign spreadsheet filename to `file`
-file = '/Users/guyon/Documents/Codes/example.xlsx'
+file = 'example.xlsx'
 
 # Load spreadsheet
-xl = pd.read_excel(file)
+excel = pd.read_excel(file)
 
-# Print the sheet names
-print(xl)
+ages = excel["Age"]
+print(ages.head())
 
+
+#print(df1)
 # Load a sheet into a DataFrame by name: df1
 # df1 = xl.parse('Sheet1')
+
+#writer = pd.write_excel('new-example.xlsx', engine='xlsxwriter')
+
+
+# df1 = pd.DataFrame(ages.head(),
+#                    columns=['col 1', "Ages"])
+
+ages.to_excel("resultats.xlsx")
