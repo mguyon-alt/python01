@@ -19,17 +19,18 @@ excel = pd.read_excel(file)
 
 # df1 = pd.DataFrame(ages.head(),
 #                    columns=['col 1', "Ages"])
-newExcel= excel.copy()
-nbSuppression=0
-
+newExcel= pd.DataFrame([[1, 2], [3, 4]], columns=list('AB'))
+nbAjout=0
+data = []
 for index, row in excel.iterrows():
     #colonne=newExcel.iloc[[0]]
     id=row[0]
     nomLab=row[1]
     cp= row[4]
-    if id != ' ' and id > 250:
-        newExcel = newExcel.drop( index= index)
-        nbSuppression+=1
+    if isinstance(cp, int) and (cp > 75000) :
+        data.append(row)
+        nbAjout+=1
 
-print(nbSuppression)
+print("Ajouts : "+ str(nbAjout))
+newExcel = pd.DataFrame(data)
 newExcel.to_excel("resultats.xlsx")
